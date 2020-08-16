@@ -119,9 +119,9 @@ public class GraphTest extends SkipRule {
         graph.addVertex(14);
         graph.addEdge(13, 14);
         assertTrue(graph.hasEdge(13, 14));
+        assertTrue(graph.hasEdge(14, 13));
 
-//        If the graph is non directed the alpha should be 2
-        assertEquals(2, graph.alpha());
+        assertEquals(1, graph.alpha());
     }
 
     @Test
