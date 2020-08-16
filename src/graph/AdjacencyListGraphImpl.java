@@ -55,8 +55,4 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
         throw new UnsupportedOperationException("TODO");
     }
 
-    @Override
-    public void print() {
-        throw new UnsupportedOperationException("TODO");
-    }
 }
