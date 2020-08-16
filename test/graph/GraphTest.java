@@ -1,6 +1,5 @@
 package graph;
 
-import graph.exceptions.VertexNotFoundException;
 import graph.factory.GraphFactory;
 import graph.factory.GraphFactoryImpl;
 import org.hamcrest.CoreMatchers;
@@ -60,7 +59,7 @@ public class GraphTest extends SkipRule {
         graph.addVertex(14);
         graph.addVertex(15);
 
-        assertEquals(CoreMatchers.hasItems(12, 13, 14, 15), graph.getVertexes());
+        assertThat(graph.getVertexes(), CoreMatchers.hasItems(12, 13, 14, 15));
     }
 
     @Test
@@ -70,9 +69,9 @@ public class GraphTest extends SkipRule {
 
         graph.addEdge(12, 13);
 
-        assertTrue(graph.hasEdge(12,13));
-        assertEquals(CoreMatchers.hasItems(13), graph.getAdjacencyList(12));
-        assertEquals(CoreMatchers.hasItems(12), graph.getAdjacencyList(13));
+        assertTrue(graph.hasEdge(12, 13));
+        assertThat(graph.getAdjacencyList(12), CoreMatchers.hasItems(13));
+        assertThat(graph.getAdjacencyList(13), CoreMatchers.hasItems(12));
     }
 
     @Test
@@ -120,7 +119,9 @@ public class GraphTest extends SkipRule {
         graph.addVertex(14);
         graph.addEdge(13, 14);
         assertTrue(graph.hasEdge(13, 14));
-        assertEquals(1, graph.alpha());
+
+//        If the graph is non directed the alpha should be 2
+        assertEquals(2, graph.alpha());
     }
 
     @Test
