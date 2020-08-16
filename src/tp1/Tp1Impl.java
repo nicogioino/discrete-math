@@ -42,12 +42,12 @@ public class Tp1Impl<T> implements Tp1<T> {
     }
 
     @Override
-    public T[][] exercise_h(Graph<T> graph) {
+    public int[][] exercise_h(Graph<T> graph) {
         throw new UnsupportedOperationException("TODO");
     }
 
     @Override
-    public T[][] exercise_i(Graph<T> graph) {
+    public int[][] exercise_i(Graph<T> graph) {
         throw new UnsupportedOperationException("TODO");
     }
 }

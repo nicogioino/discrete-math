@@ -29,7 +29,7 @@ public interface Tp1<T> {
 
     Graph<T> exercise_g(Graph<T> graph);
 
-    T[][] exercise_h(Graph<T> graph);
+    int[][] exercise_h(Graph<T> graph);
 
-    T[][] exercise_i(Graph<T> graph);
+    int[][] exercise_i(Graph<T> graph);
 }
