@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import solved.Tp1SolvedImpl;
 import utils.SkipRule;
 
 import java.util.ArrayList;
@@ -22,11 +23,13 @@ public class Tp1Test extends SkipRule {
 
     private final GraphType type;
     private Graph<Integer> graph;
-    private final GraphFactory<Integer> graphFactory = new GraphFactoryImpl<>();
-    private final Tp1Impl<Integer> tp1 = new Tp1Impl<>();
+    private final GraphFactory<Integer> graphFactory;
+    private final Tp1<Integer> tp1;
 
     public Tp1Test(GraphType type) {
         this.type = type;
+        this.tp1 = new Tp1SolvedImpl<>();
+        this.graphFactory = new GraphFactoryImpl<>();
         graph = graphFactory.createFromType(type);
     }
 
@@ -108,7 +111,7 @@ public class Tp1Test extends SkipRule {
         graph.addEdge(2, 2);
 
         assertEquals(3, tp1.exercise_c(graph).size());
-        assertEquals(CoreMatchers.hasItems(1, 2, 4), tp1.exercise_c(graph));
+        assertThat(tp1.exercise_c(graph), CoreMatchers.hasItems(1, 2, 4));
     }
 
     //    d) Dado un vértice informar si es aislado.
@@ -133,7 +136,7 @@ public class Tp1Test extends SkipRule {
         assertFalse(tp1.exercise_d(graph, 2));
         assertFalse(tp1.exercise_d(graph, 3));
         assertFalse(tp1.exercise_d(graph, 4));
-        assertTrue(tp1.exercise_d(graph, 5));
+        assertFalse(tp1.exercise_d(graph, 5));
     }
 
     //    e) Calcular cuantos vértices son aislados.
@@ -177,7 +180,7 @@ public class Tp1Test extends SkipRule {
         graph.addVertex(3);
         graph.addVertex(4);
         graph.addVertex(5);
-        assertEquals(CoreMatchers.hasItems(2, 3, 4, 5), tp1.exercise_f(graph));
+        assertThat(tp1.exercise_f(graph), CoreMatchers.hasItems(2, 3, 4, 5));
     }
 
     @Test
@@ -203,7 +206,7 @@ public class Tp1Test extends SkipRule {
         graph.addEdge(2, 3);
         graph.addEdge(3, 4);
         graph.addEdge(4, 2);
-        assertEquals(CoreMatchers.hasItems(1, 5), tp1.exercise_f(graph));
+        assertThat(tp1.exercise_f(graph), CoreMatchers.hasItems(1, 5));
     }
 
     //    g) Dado un grafo debe retornar otro grafo sin lazos y sin vértices aislados.
@@ -273,7 +276,7 @@ public class Tp1Test extends SkipRule {
         graph.addEdge(1, 4);
         graph.addEdge(4, 5);
 
-        assertArrayEquals(new int[][]{{0, 1, 0, 1, 0, 0}, {1, 0, 1, 0, 0, 0}, {0, 1, 0, 0, 0, 0}, {1, 0, 0, 0, 1, 0}, {0, 0, 0, 0, 0, 0}}, tp1.exercise_h(graph));
+        assertArrayEquals(new int[][]{{0, 1, 0, 1, 0, 0}, {1, 0, 1, 0, 0, 0}, {0, 1, 0, 0, 0, 0}, {1, 0, 0, 0, 1, 0}, {0, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 0, 0}}, tp1.exercise_h(graph));
     }
 
     //    i) Calcular y mostrar la matriz de incidencia.
@@ -291,7 +294,7 @@ public class Tp1Test extends SkipRule {
         graph.addEdge(2, 4);
         graph.addEdge(3, 4);
         graph.addEdge(3, 5);
-        graph.addEdge(2, 4);
+        graph.addEdge(5, 4);
         graph.addEdge(4, 6);
         graph.addEdge(3, 6);
 
