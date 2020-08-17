@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import solved.Tp1SolvedImpl;
 import utils.SkipRule;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class Tp1Test extends SkipRule {
 
     public Tp1Test(GraphType type) {
         this.type = type;
-        this.tp1 = new Tp1SolvedImpl<>();
+        this.tp1 = new Tp1Impl<>();
         this.graphFactory = new GraphFactoryImpl<>();
         graph = graphFactory.createFromType(type);
     }
