@@ -12,7 +12,7 @@ public class SkipRule {
         public void evaluate() throws Throwable {
             try {
                 base.evaluate();
-            } catch (Exception e) {
+            } catch (UnsupportedOperationException e) {
                 Assume.assumeNoException("UnsupportedOperation exception: skipping test", e);
             }
         }
