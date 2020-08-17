@@ -20,11 +20,12 @@ public class GraphTest extends SkipRule {
 
     private final GraphType type;
     private Graph<Integer> graph;
-    private final GraphFactory<Integer> graphFactory = new GraphFactoryImpl<>();
+    private final GraphFactory<Integer> graphFactory;
 
     public GraphTest(GraphType type) {
         this.type = type;
-        graph = graphFactory.createFromType(type);
+        this.graphFactory = new GraphFactoryImpl<>();
+        this.graph = graphFactory.createFromType(type);
     }
 
     @Parameterized.Parameters(name = "{0}")
