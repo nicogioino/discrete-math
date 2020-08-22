@@ -2,7 +2,6 @@ package graph;
 
 import java.util.List;
 
-// TODO: implement
 public class EdgeArrayGraphImpl<T> implements Graph<T> {
     @Override
     public void addVertex(T x) {
