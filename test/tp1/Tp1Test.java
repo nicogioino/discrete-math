@@ -45,6 +45,15 @@ public class Tp1Test extends SkipRule {
     //    a) Mostrar el grafo.
     @Test
     public void exercise_a_test_print() {
+        graph.addVertex(1);
+        graph.addVertex(2);
+        graph.addVertex(3);
+        graph.addVertex(4);
+        graph.addVertex(5);
+
+        graph.addEdge(2, 3);
+        graph.addEdge(4, 5);
+
         tp1.exercise_a(graph);
     }
 

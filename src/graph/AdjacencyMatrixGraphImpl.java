@@ -20,6 +20,14 @@ public class AdjacencyMatrixGraphImpl<T> implements Graph<T> {
     @Override
     public void addVertex(T x) {
         vertexes.add(n,x);
+        List<Boolean> list = new ArrayList<>();
+        for (int i = 0; i <= n ; i++) {
+            list.add(false);
+        }
+        for (List<Boolean> edgeList: edges) {
+            edgeList.add(false);
+        }
+        edges.add(n,list);
         n++;
     }
 
@@ -32,6 +40,11 @@ public class AdjacencyMatrixGraphImpl<T> implements Graph<T> {
     public void removeVertex(T x) {
         if (hasVertex(x)){
             vertexes.remove(x);
+            if (n>1) {
+                for (List<Boolean> booleans : edges) {
+                    booleans.remove(n - 1);
+                }
+            }
             n--;
         }
         else throw new IllegalArgumentException("The vertex is not present in the graph");
@@ -51,12 +64,12 @@ public class AdjacencyMatrixGraphImpl<T> implements Graph<T> {
                 }
             }
 
-            edges.get(vIndex).add(wIndex,true);
-            edges.get(wIndex).add(vIndex,true);
+
+            edges.get(vIndex).set(wIndex,true);
+            edges.get(wIndex).set(vIndex,true);
             alpha++;
 
         }
-        else throw new IllegalArgumentException("One of the given vertex are not present in the graph");
     }
 
     @Override
@@ -73,12 +86,11 @@ public class AdjacencyMatrixGraphImpl<T> implements Graph<T> {
                 }
             }
 
-            edges.get(vIndex).add(wIndex,false);
-            edges.get(wIndex).add(vIndex,false);
+            edges.get(vIndex).set(wIndex,false);
+            edges.get(wIndex).set(vIndex,false);
             alpha--;
 
         }
-        else throw new IllegalArgumentException("One of the given vertex are not present in the graph");
     }
 
     @Override
@@ -98,7 +110,7 @@ public class AdjacencyMatrixGraphImpl<T> implements Graph<T> {
             return edges.get(vIndex).get(wIndex) && edges.get(wIndex).get(vIndex);
 
         }
-        else throw new IllegalArgumentException("One of the given vertex are not present in the graph");
+        return false;
     }
 
     @Override
