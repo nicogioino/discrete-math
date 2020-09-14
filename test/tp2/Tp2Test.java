@@ -3,7 +3,6 @@ package tp2;
 import graph.Graph;
 import graph.factory.GraphFactory;
 import graph.factory.GraphFactoryImpl;
-import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 import utils.SkipRule;
