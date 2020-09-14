@@ -29,6 +29,69 @@ public class Tp2Test extends SkipRule {
         graph = graphFactory.getGraph();
     }
 
+    //    Part 0
+    //    i) Depth first search
+    @Test
+    public void depth_first_search_test() {
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addVertex("D");
+        graph.addVertex("E");
+        graph.addVertex("F");
+        graph.addVertex("G");
+        graph.addVertex("H");
+        graph.addVertex("I");
+
+        graph.addEdge("A","B");
+        graph.addEdge("A","I");
+        graph.addEdge("G","I");
+        graph.addEdge("C","I");
+        graph.addEdge("C","D");
+        graph.addEdge("C","E");
+        graph.addEdge("C","F");
+        graph.addEdge("G","F");
+        graph.addEdge("G","H");
+        graph.addEdge("E","H");
+        testSearches(graph, tp2.depth_first_search(graph));
+    }
+
+    //   ii) Breadth first search
+    @Test
+    public void breadth_first_search_test() {
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addVertex("D");
+        graph.addVertex("E");
+        graph.addVertex("F");
+        graph.addVertex("G");
+        graph.addVertex("H");
+        graph.addVertex("I");
+
+        graph.addEdge("A","B");
+        graph.addEdge("A","I");
+        graph.addEdge("G","I");
+        graph.addEdge("C","I");
+        graph.addEdge("C","D");
+        graph.addEdge("C","E");
+        graph.addEdge("C","F");
+        graph.addEdge("G","F");
+        graph.addEdge("G","H");
+        graph.addEdge("E","H");
+        testSearches(graph, tp2.breadth_first_search(graph));
+    }
+
+    public void testSearches(Graph<String> graph, List<String> output) {
+        assertEquals(graph.order(), output.size());
+
+        assertEquals(output.stream().distinct().count(), output.size());
+
+        for (String vertex : output) {
+            assertTrue(graph.hasVertex(vertex));
+        }
+    }
+
     //    Part 1
     //    a) Dado un grafo sin lazos y dos vértices v y w, verificar si hay un camino.
     @Test
@@ -613,56 +676,4 @@ public class Tp2Test extends SkipRule {
         assertEquals(Integer.valueOf(1), result.get("H"));
     }
 
-    //    x) Algoritmo de Fleury
-    @Test
-    public void exercise_o_fleury_test_1() {
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-        graph.addVertex("D");
-
-        graph.addEdge("A", "B");
-        graph.addEdge("A", "C");
-        graph.addEdge("B", "C");
-        graph.addEdge("C", "D");
-
-        List<String> expected = Arrays.asList("C", "A", "B", "C", "D");
-        assertThat(tp2.exercise_o(graph), is(expected));
-    }
-
-    @Test
-    public void exercise_o_fleury_test_2() {
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-
-        graph.addEdge("A", "B");
-        graph.addEdge("B", "C");
-        graph.addEdge("C", "A");
-
-        List<String> expected = Arrays.asList("A", "B", "C", "A");
-        assertThat(tp2.exercise_o(graph), is(expected));
-    }
-
-    //    TODO: check if there is another path
-    @Test
-    public void exercise_o_fleury_test_3() {
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-        graph.addVertex("D");
-        graph.addVertex("E");
-
-        graph.addEdge("A", "B");
-        graph.addEdge("A", "C");
-        graph.addEdge("B", "C");
-        graph.addEdge("A", "D");
-        graph.addEdge("E", "D");
-        graph.addEdge("C", "D");
-        graph.addEdge("B", "D");
-        graph.addEdge("C", "E");
-
-        List<String> expected = Arrays.asList("A", "B", "C", "A", "D", "E", "C", "D", "B");
-        assertThat(tp2.exercise_o(graph), is(expected));
-    }
 }

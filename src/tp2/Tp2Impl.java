@@ -7,6 +7,16 @@ import java.util.Map;
 
 public class Tp2Impl<T> implements Tp2<T> {
     @Override
+    public List<T> depth_first_search(Graph<T> graph) {
+        throw new UnsupportedOperationException("TODO");
+    }
+
+    @Override
+    public List<T> breadth_first_search(Graph<T> graph) {
+        throw new UnsupportedOperationException("TODO");
+    }
+
+    @Override
     public boolean exercise_a(Graph<T> graph, T v, T w) {
         throw new UnsupportedOperationException("TODO");
     }
@@ -73,11 +83,6 @@ public class Tp2Impl<T> implements Tp2<T> {
 
     @Override
     public Map<T, Integer> exercise_n(Graph<T> graph) {
-        throw new UnsupportedOperationException("TODO");
-    }
-
-    @Override
-    public List<T> exercise_o(Graph<T> graph) {
         throw new UnsupportedOperationException("TODO");
     }
 

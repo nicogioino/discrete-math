@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 interface Tp2<T> {
+//    Part 0
+//    i) Depth first search
+//   ii) Breadth first search
+    List<T> depth_first_search(Graph<T> graph);
+    List<T> breadth_first_search(Graph<T> graph);
+
 //    Part 1
 //    a) Dado un grafo sin lazos y dos vértices v y w, verificar si hay un camino.
 //    b) Dado un grafo sin lazos y un vértice v, verificar si hay un ciclo de v a v.
@@ -51,8 +57,4 @@ interface Tp2<T> {
     int exercise_m(Graph<T> graph, T v);
 
     Map<T, Integer> exercise_n(Graph<T> graph);
-
-//    Part 3
-//    o) Algoritmo de Fleury
-    List<T> exercise_o(Graph<T> graph);
 }
