@@ -378,7 +378,7 @@ public class Tp2Test extends SkipRule {
         graph.addVertex("B");
         graph.addVertex("C");
 
-        assertEquals(0, tp2.exercise_h(graph));
+        assertEquals(3, tp2.exercise_h(graph));
     }
 
     @Test
@@ -391,7 +391,7 @@ public class Tp2Test extends SkipRule {
         graph.addEdge("A", "B");
         graph.addEdge("C", "D");
 
-        assertEquals(0, tp2.exercise_h(graph));
+        assertEquals(2, tp2.exercise_h(graph));
     }
 
     @Test
@@ -405,7 +405,7 @@ public class Tp2Test extends SkipRule {
         graph.addEdge("C", "A");
         graph.addEdge("C", "D");
 
-        assertEquals(2, tp2.exercise_h(graph));
+        assertEquals(1, tp2.exercise_h(graph));
     }
 
     //    Part 2:
