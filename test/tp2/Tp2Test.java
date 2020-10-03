@@ -464,51 +464,51 @@ public class Tp2Test extends SkipRule {
     //    j) Dado dos grafos g1 y g2, verifique si g1 es subgrafo recubridor de g2.
     @Test
     public void exercise_j_covering_subgraph_test() {
-        var graph_1 = graphFactory.getGraph();
-        graph_1.addVertex("A");
-        graph_1.addVertex("B");
-        graph_1.addVertex("C");
-        graph_1.addEdge("A", "B");
-        graph_1.addEdge("A", "C");
+        var graph1 = graphFactory.getGraph();
+        graph1.addVertex("A");
+        graph1.addVertex("B");
+        graph1.addVertex("C");
+        graph1.addEdge("A", "B");
+        graph1.addEdge("A", "C");
 
-        var graph_2 = graphFactory.getGraph();
-        graph_1.addVertex("A");
-        graph_1.addVertex("B");
-        graph_1.addVertex("C");
-        graph_1.addEdge("A", "B");
-        graph_1.addEdge("A", "C");
+        var graph2 = graphFactory.getGraph();
+        graph2.addVertex("A");
+        graph2.addVertex("B");
+        graph2.addVertex("C");
+        graph2.addEdge("A", "B");
+        graph2.addEdge("A", "C");
 
-        var graph_3 = graphFactory.getGraph();
-        graph_1.addVertex("A");
-        graph_1.addVertex("B");
-        graph_1.addVertex("C");
+        var graph3 = graphFactory.getGraph();
+        graph3.addVertex("A");
+        graph3.addVertex("B");
+        graph3.addVertex("C");
 
-        var graph_4 = graphFactory.getGraph();
-        graph_1.addVertex("A");
-        graph_1.addVertex("B");
-        graph_1.addVertex("C");
-        graph_1.addEdge("B", "C");
-        graph_1.addEdge("A", "C");
-        graph_1.addEdge("A", "B");
+        var graph4 = graphFactory.getGraph();
+        graph4.addVertex("A");
+        graph4.addVertex("B");
+        graph4.addVertex("C");
+        graph4.addEdge("B", "C");
+        graph4.addEdge("A", "C");
+        graph4.addEdge("A", "B");
 
-        var graph_5 = graphFactory.getGraph();
-        graph_1.addVertex("A");
-        graph_1.addVertex("B");
-        graph_1.addVertex("D");
-        graph_1.addEdge("A", "B");
-        graph_1.addEdge("A", "D");
+        var graph5 = graphFactory.getGraph();
+        graph5.addVertex("A");
+        graph5.addVertex("B");
+        graph5.addVertex("D");
+        graph5.addEdge("A", "B");
+        graph5.addEdge("A", "D");
 
-        var graph_6 = graphFactory.getGraph();
-        graph_1.addVertex("A");
-        graph_1.addVertex("B");
-        graph_1.addEdge("A", "B");
+        var graph6 = graphFactory.getGraph();
+        graph6.addVertex("A");
+        graph6.addVertex("B");
+        graph6.addEdge("A", "B");
 
-        assertTrue(tp2.exercise_j(graph_1, graph_2));
-        assertTrue(tp2.exercise_j(graph_1, graph_3));
-        assertTrue(tp2.exercise_j(graph_1, graph_4));
+        assertTrue(tp2.exercise_j(graph1, graph2));
+        assertTrue(tp2.exercise_j(graph1, graph3));
+        assertTrue(tp2.exercise_j(graph1, graph4));
 
-        assertFalse(tp2.exercise_j(graph_1, graph_5));
-        assertFalse(tp2.exercise_j(graph_1, graph_6));
+        assertFalse(tp2.exercise_j(graph1, graph5));
+        assertFalse(tp2.exercise_j(graph1, graph6));
     }
 
     //    k) Verificar si un grafo es completo.
