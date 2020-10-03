@@ -542,7 +542,7 @@ public class Tp2Test extends SkipRule {
         graph.addVertex("D");
 
         graph.addEdge("A", "B");
-        graph.addEdge("A", "B");
+        graph.addEdge("A", "C");
         graph.addEdge("A", "D");
         graph.addEdge("B", "C");
         graph.addEdge("B", "D");
