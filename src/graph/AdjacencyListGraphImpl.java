@@ -62,7 +62,13 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
         boolean hasEdge = false;
 
         for (List<T> edge : edges) {
-            if (edge.contains(v) && edge.contains(w)) {
+            if (v.equals(w)){
+                if (edge.get(0).equals(v) && edge.get(0).equals(edge.get(1))){
+                    hasEdge = true;
+                    break;
+                }
+            }
+            else if (edge.contains(v) && edge.contains(w)) {
                 hasEdge = true;
                 break;
             }
