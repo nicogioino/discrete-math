@@ -77,21 +77,20 @@ public class Tp2Impl<T> implements Tp2<T> {
 
     public boolean existsPath(Graph<T> g, T s, T t) {
         List<T> visited = new ArrayList<>();
-        return existsPath(g, s, t, visited,s);
+        return existsPath(g, s, t, visited, s);
     }
 
-    private boolean existsPath(Graph<T> g, T currentNode, T finalNode, List<T> visited,T lastNode) {
+    private boolean existsPath(Graph<T> g, T currentNode, T finalNode, List<T> visited, T lastNode) {
         List<T> adjacent = g.getAdjacencyList(currentNode);
         visited.add(currentNode);
         adjacent.remove(lastNode);
 
         if (adjacent.contains(finalNode)) {
             return true;
-        }
-        else {
+        } else {
             for (T node : adjacent) {
                 if (!visited.contains(node)) {
-                   return existsPath(g, node, finalNode, visited, currentNode);
+                    return existsPath(g, node, finalNode, visited, currentNode);
                 }
 
             }
@@ -107,7 +106,23 @@ public class Tp2Impl<T> implements Tp2<T> {
 
     @Override
     public int exercise_e(Graph<T> graph, T v, T w) {
-        throw new UnsupportedOperationException("TODO");
+        if (v == w) return 0;
+        if (graph.getAdjacencyList(v).contains(w)) return 1;
+        else return exerciseEAux(graph, v, w, 0, new ArrayList<>());
+
+
+    }
+
+    public int exerciseEAux(Graph<T> graph, T v, T w, int counter, List<T> visited) {
+        List<T> adjacent = graph.getAdjacencyList(v);
+        visited.add(v);
+        if (adjacent.contains(w)) return counter + 1;
+        else for (T node : graph.getAdjacencyList(v)) {
+            if (!visited.contains(node))
+                return exerciseEAux(graph, node, w, counter+1,visited);
+        }
+        return -1;
+
     }
 
     @Override
@@ -201,7 +216,8 @@ public class Tp2Impl<T> implements Tp2<T> {
             for (T vertex2 : originalVertexes) {
                 if (!graph.hasEdge(vertex1, vertex2)) {
                     if (!vertex1.equals(vertex2)) {
-                        complementaryGraph.addEdge(vertex1, vertex2);
+                        if (!complementaryGraph.hasEdge(vertex2, vertex1))
+                            complementaryGraph.addEdge(vertex1, vertex2);
                     }
                 }
             }
